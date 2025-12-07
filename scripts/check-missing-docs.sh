@@ -32,13 +32,13 @@ extract_examples_from_framework() {
     
     if [ ! -d "$examples_path" ]; then
         return
-    fi
+    if
     
     # List all directories in examples/framework
     find "$examples_path" -maxdepth 1 -type d | while read -r dir; do
         if [ "$dir" != "$examples_path" ]; then
             basename "$dir"
-        fi
+        if
     done | sort
 }
 
@@ -162,14 +162,14 @@ check_framework() {
         cat "$missing_apis_file"
     else
         echo -e "\n${GREEN}✅ All API references are documented${NC}"
-    fi
+    if
     
     if [ -s "$missing_examples_file" ]; then
         echo -e "\n${RED}❌ Missing Examples:${NC}"
         cat "$missing_examples_file"
     else
         echo -e "\n${GREEN}✅ All examples are documented${NC}"
-    fi
+    if
     
     # Report extra items in config (might be outdated)
     local extra_apis_file="$temp_dir/extra_apis"
@@ -181,12 +181,12 @@ check_framework() {
     if [ -s "$extra_apis_file" ]; then
         echo -e "\n${YELLOW}⚠️ Extra API References in config (may be outdated):${NC}"
         cat "$extra_apis_file"
-    fi
+    if
     
     if [ -s "$extra_examples_file" ]; then
         echo -e "\n${YELLOW}⚠️ Extra Examples in config (may be outdated):${NC}"
         cat "$extra_examples_file"
-    fi
+    if
     
     # Cleanup
     rm -rf "$temp_dir"
